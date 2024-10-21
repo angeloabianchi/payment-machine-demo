@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment and Transaction</title>
+    <!-- Link to the CSS stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/payment_form.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Navigation bar to toggle between Payment and Transaction forms -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+        <div class="navbar-nav nav-container">
+          <div class="nav-item nav-buttons">
+            <a
+              href="#"
+              class="nav-link"
+              id="payment-tab"
+              onclick="showPaymentForm()"
+              >PAYMENT</a
+            >
+          </div>
+          <div class="nav-item nav-buttons">
+            <a
+              href="#"
+              class="nav-link"
+              id="transaction-tab"
+              onclick="showTransactionForm()"
+              >TRANSACTION</a
+            >
+          </div>
+        </div>
+      </nav>
+
+      <!-- Payment Form Section -->
+      <div id="payment-form-section">
+        <h2>Make a Payment</h2>
+        <form id="payment-form">
+          {% csrf_token %}
+
+          <div
+            style="display: flex; text-align: center; justify-content: center"
+          >
+            <!-- Payment method selection dropdown -->
+            <div style="width: 20%; margin: 10px">
+              <label for="payment-method">Payment Method:</label>
+              <select name="payment_method" id="payment-method" required>
+                <option value="card">Card</option>
+                <option value="cash">Cash</option>
+              </select>
+            </div>
+
+            <!-- Currency display -->
+            <div style="width: 20%; margin: 10px">
+              <label for="currency">Currency:</label>
+              <input
+                type="text"
+                name="currency"
+                id="currency"
+                value="eur"
+                disabled
+              />
+            </div>
+
+            <!-- Amount input field -->
+            <div style="width: 20%; margin: 10px">
+              <label for="amount">Amount:</label>
+              <input type="number" name="amount" id="amount" min="0" required />
+            </div>
+
+            <!-- Card information section, shown by default -->
+            <div
+              id="card-info"
+              style="display: block; width: 30%; margin: 10px"
+            >
+              <label for="card-number">Card Number:</label>
+              <input
+                type="text"
+                name="card_num"
+                id="card-number"
+                min="0"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Cash input fields, hidden by default -->
+          <div id="cash-info" style="display: none">
+            <h3>Insert Money</h3>
+            <div
+              class="coin-inputs"
+              style="display: flex; flex-direction: row; flex-wrap: wrap"
+            >
+              <!-- Cash and coin input fields -->
+              <div style="width: 75px; margin: 10px">
+                <label for="bill-200">200€ bills:</label>
+                <input
+                  type="number"
+                  id="1"
+                  class="cash-input"
+                  data-value="20000"
+                  min="0"
+                />
+              </div>
+              <div style="width: 75px; margin: 10px">
+                <label for="bill-100€">100€ bills:</label>
+                <input
+                  type="number"
+                  id="2"
+                  class="cash-input"
+                  data-value="10000"
+                  min="0"
+                />
+              </div>
+              <div style="width: 75px; margin: 10px">
+                <label for="bill-50">50€ bills:</label>
+                <input
+                  type="number"
+                  id="3"
+                  class="cash-input"
+                  data-value="5000"
+                  min="0"
+                />
+              </div>
+              <div style="width: 75px; margin: 10px">
+                <label for="bill-20">20€ bills:</label>
+                <input
+                  type="number"
+                  id="4"
+                  class="cash-input"
+                  data-value="2000"
+                  min="0"
+                />
+              </div>
+              <div style="width: 75px; margin: 10px">
+                <label for="bill-10">10€ bills:</label>
+                <input
+                  type="number"
+                  id="5"
+                  class="cash-input"
+                  data-value="1000"
+                  min="0"
+                />
+              </div>
+              <div style="width: 75px; margin: 10px">
+                <label for="bill-5">5€ bills:</label>
+                <input
+                  type="number"
+                  id="6"
+                  class="cash-input"
+                  data-value="500"
+                  min="0"
+                />
+              </div>
+              <div style="width: 75px; margin: 10px">
+                <label for="bill-2">2€ coins:</label>
+                <input
+                  type="number"
+                  id="7"
+                  class="cash-input"
+                  data-value="200"
+                  min="0"
+                />
+              </div>
+              <div style="width: 75px; margin: 10px">
+                <label for="bill-1">1€ coins:</label>
+                <input
+                  type="number"
+                  id="8"
+                  class="cash-input"
+                  data-value="100"
+                  min="0"
+                />
+              </div>
+              <div style="width: 75px; margin: 10px">
+                <label for="coin-50">50¢ coins:</label>
+                <input
+                  type="number"
+                  id="9"
+                  class="cash-input"
+                  data-value="50"
+                  min="0"
+                />
+              </div>
+              <div style="width: 75px; margin: 10px">
+                <label for="coin-20">20¢ coins:</label>
+                <input
+                  type="number"
+                  id="10"
+                  class="cash-input"
+                  data-value="20"
+                  min="0"
+                />
+              </div>
+              <div style="width: 75px; margin: 10px">
+                <label for="coin-10">10¢ coins:</label>
+                <input
+                  type="number"
+                  id="11"
+                  class="cash-input"
+                  data-value="10"
+                  min="0"
+                />
+              </div>
+              <div style="width: 75px; margin: 10px">
+                <label for="coin-5">5¢ coins:</label>
+                <input
+                  type="number"
+                  id="12"
+                  class="cash-input"
+                  data-value="5"
+                  min="0"
+                />
+              </div>
+              <div style="width: 75px; margin: 10px">
+                <label for="coin-2">2€ coins:</label>
+                <input
+                  type="number"
+                  id="13"
+                  class="cash-input"
+                  data-value="2"
+                  min="0"
+                />
+              </div>
+              <div style="width: 75px; margin: 10px">
+                <label for="coin-1">1€ coins:</label>
+                <input
+                  type="number"
+                  id="14"
+                  class="cash-input"
+                  data-value="1"
+                  min="0"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit button for the payment form -->
+          <button class="submit" type="submit">Submit Payment</button>
+        </form>
+      </div>
+
+       <!-- Transaction Form Section, hidden by default -->
+      <div id="transaction-form-section" style="display: none">
+        <h2>Transactions</h2>
+        <div style="display: flex; justify-content: center">
+          <!-- Button to view all transactions -->
+          <button class="transactions" id="transactions">
+            View All Transactions
+          </button>
+
+          <!-- Form to search for a specific transaction by ID -->
+          <form
+            id="transaction-form"
+            style="
+              display: flex;
+              text-align: center;
+              flex-direction: column;
+              width: 65%;
+              margin: 10px;
+            "
+          >
+            <div>
+              <label for="transaction-id">Transaction ID</label>
+              <input
+                type="number"
+                name="transaction-id"
+                id="transaction-id"
+                min="1"
+              />
+            </div>
+            <button class="transaction" type="submit">
+              Find a Transaction
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Container for server responses -->
+      <div id="response-container" class="terminal"></div>
+    </div>
+
+    <!-- Link to the JavaScript file for handling form actions -->
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
