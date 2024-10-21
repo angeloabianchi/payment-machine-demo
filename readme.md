@@ -16,25 +16,25 @@
 - SQLite (included with Django)
 
 ## Project Structure
-
-- payment-machine-demo/
-- ├── payment/
-- │   ├── templates/    # HTML templates
-- │   ├── models.py     # Database models
-- │   ├── urls.py       # URL routing
-- │   ├── utils.py      # Utility functions for payments
-- │   └── views.py      # Payment processing and API views
-- ├── payment_machine_demo/
-- │   ├── settings.py   # Project settings
-- │   ├── urls.py       # Main URL configuration
-- │   └── wsgi.py       # WSGI configuration
-- ├── static/
-- │   ├── css/          # Stylesheets
-- │   └── js/           # JavaScript files
-- ├── manage.py         # Django management script
-- ├── requirements.txt  # Project dependencies
-- └── .env             # Environment variables
-
+```plaintext
+payment-machine-demo/
+├── payment/
+│   ├── templates/    # HTML templates
+│   ├── models.py     # Database models
+│   ├── urls.py       # URL routing
+│   ├── utils.py      # Utility functions for payments
+│   └── views.py      # Payment processing and API views
+├── payment_machine_demo/
+│   ├── settings.py   # Project settings
+│   ├── urls.py       # Main URL configuration
+│   └── wsgi.py       # WSGI configuration
+├── static/
+│   ├── css/          # Stylesheets
+│   └── js/           # JavaScript files
+├── manage.py         # Django management script
+├── requirements.txt  # Project dependencies
+└── .env              # Environment variables
+```
 ## Installation
 
 1. Clone the repository
@@ -78,10 +78,12 @@ python manage.py runserver
 ```
 API Endpoints
 
-- POST /api/payment/card - Process card payments
-- POST /api/payment/cash - Process cash payments
-- GET /api/transactions - Get all transactions
-- GET /api/transactions/<id> - Get transaction by ID
+```plaintext
+POST   /api/payment/card        # Process card payments
+POST   /api/payment/cash        # Process cash payments
+GET    /api/transactions        # Get all transactions
+GET    /api/transactions/{id}   # Get transaction by ID
+```
 
 ## Usage Examples
 
@@ -109,9 +111,9 @@ API Endpoints
 ## Web Interface
 
 The project includes a web interface for processing payments and viewing transactions. Access it at:
-
+```
 http://localhost:8000/api/payment-form/
-
+```
 ## Future Improvements
 
 1. Features
