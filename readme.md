@@ -126,7 +126,7 @@ http://localhost:8000/api/payment-form/
 - Add integration tests
 
 ## Dependencies
-
+```plaintext
 asgiref==3.8.1
 certifi==2024.8.30
 charset-normalizer==3.4.0
@@ -138,3 +138,4 @@ python-decouple==3.8
 requests==2.32.3
 sqlparse==0.5.1
 urllib3==2.2.3
+```
