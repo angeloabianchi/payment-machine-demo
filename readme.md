@@ -21,6 +21,7 @@ payment-machine-demo/
 ├── payment/
 │   ├── templates/    # HTML templates
 │   ├── models.py     # Database models
+│   ├── test_payments.py     # Testing
 │   ├── urls.py       # URL routing
 │   ├── utils.py      # Utility functions for payments
 │   └── views.py      # Payment processing and API views
@@ -29,7 +30,7 @@ payment-machine-demo/
 │   ├── urls.py       # Main URL configuration
 │   └── wsgi.py       # WSGI configuration
 ├── static/
-│   ├── css/          # Stylesheets
+│   ├── css/          # StylesheetsAC
 │   └── js/           # JavaScript files
 ├── manage.py         # Django management script
 ├── requirements.txt  # Project dependencies
@@ -76,7 +77,57 @@ python manage.py migrate
 ```
 python manage.py runserver
 ```
-API Endpoints
+## Testing
+
+### UI Testing with Selenium
+
+The project includes automated UI tests using Selenium WebDriver. These tests verify the functionality of the payment form interface and payment processing.
+
+### Test Setup Requirements
+
+1. Install Selenium WebDriver:
+```
+pip install selenium
+```
+2. Install Webdriver
+```
+pip install webdriver-manager
+```
+### Running the Tests
+
+Execute the UI tests using:
+
+```bash
+python manage.py test payment.test_payment
+```
+
+### Test Coverage
+
+The Selenium tests include:
+
+1. Payment Form Elements Test
+
+- Verifies presence and visibility of basic form elements
+- Tests amount field, payment method selector, and currency field
+
+2. Payment Method Switching Test
+
+- Tests switching between card and cash payment methods
+- Verifies appropriate form sections are displayed/hidden
+
+3. Card Payment Processing Test
+
+- Tests card payment submission
+- Validates form submission and response handling
+- Verifies JSON response format and success status
+
+4. Cash Payment Processing Test
+
+- Tests cash payment submission with bill denominations
+- Validates change calculation
+- Verifies response format and change amount
+
+## API Endpoints
 
 ```plaintext
 POST   /api/payment/card        # Process card payments
