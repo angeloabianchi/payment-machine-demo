@@ -15,6 +15,15 @@
 - Django 5.1.2
 - SQLite (included with Django)
 
+### Installing Python
+
+If you do not have Python installed, you can install it with the following commands:
+
+```bash
+sudo apt update
+sudo apt install python3 python3-venv python3-pip
+```
+
 ## Project Structure
 ```plaintext
 payment-machine-demo/

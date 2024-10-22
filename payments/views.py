@@ -197,18 +197,3 @@ def get_transaction_by_id(request, transaction_id):
         return JsonResponse(transaction_data)
     except Transaction.DoesNotExist:
         return JsonResponse({"success": False, "error": "Transaction not found"}, status=404)
-
-
-
-
-
-
-
-
-
-
-
-# FAZER O README.MD         ok
-# VERIFICAR SE O README.MD ESTA FAZENDO CORRETO OS PASSO A PASSO
-# FAZER UM TESTING
-# FAZER O REQUIREMENTS.TXT --> nao sei se pode criar aqui ou dentro do venv (environment)       ok
